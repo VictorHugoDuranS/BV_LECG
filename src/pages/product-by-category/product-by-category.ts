@@ -1,0 +1,69 @@
+import { Component } from '@angular/core';
+import { NavController, NavParams, ToastController, IonicPage, LoadingController } from 'ionic-angular';
+import * as WC from 'woocommerce-api';
+import { WoocommerceProvider } from "../../providers/woocommerce/woocommerce";
+// import { ProductDetailsPage } from "../product-details/product-details";
+
+@IonicPage()
+@Component({
+  selector: 'page-product-by-category',
+  templateUrl: 'product-by-category.html',
+})
+export class ProductByCategoryPage {
+
+  WooCommerce: any;
+  products: any[];
+  page: number;
+  category: any;
+  loading: any;
+
+  constructor(public loadingCtrl: LoadingController, public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, private WP: WoocommerceProvider) {
+
+    this.page = 1;
+    this.category = this.navParams.get("category");
+
+    this.WooCommerce = WP.init();
+    this.loading = this.loadingCtrl.create({
+      content: 'Cargando productos'
+    });
+    this.loading.present()
+    this.WooCommerce.getAsync("products?category=" + this.category.id).then( (data) => {
+      console.log(JSON.parse(data.body));
+      this.products = JSON.parse(data.body);
+    }, (err) => {
+      console.log(err)
+    }).then( (err) => {
+      this.loading.dismiss()}
+    )
+
+  }
+
+  LoadMoreProducts(event){
+    this.page++;
+    console.log("Getting page " + this.page);
+
+    this.WooCommerce.getAsync("products?filter[category]=" + this.category.slug + "&page=" + this.page).then(( data ) => {
+      let temp = (JSON.parse(data.body).products);
+
+      this.products = this.products.concat(JSON.parse(data.body).products)
+      console.log(this.products);
+      event.complete();
+
+      if (temp.length < 10) {
+        event.enable(false);
+
+        this.toastCtrl.create({
+          message: "No more products to load!",
+          duration: 3000
+        }).present();
+      }
+
+    })
+  }
+
+  openProductPage(product)
+  {
+    this.navCtrl.push('ProductDetailsPage', {"product": product} )
+  }
+
+}

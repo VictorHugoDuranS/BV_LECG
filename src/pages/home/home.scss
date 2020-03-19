@@ -1,3 +1,78 @@
 page-home {
 
+.slidess{
+  background-image: url("../../assets/imgs/plazoleta.jpg");
+  background-size: contain;
+    background-repeat: repeat;
+      background-attachment: fixed;
+  background-position: center;
 }
+h1{
+  font-family: great;
+  color: white;
+}
+
+ion-card {
+    position: relative;
+    text-align: center;
+  }
+.adquiere{
+  h2{
+    font-family: h2;
+    padding-top: 20px;
+      color: white;
+  }
+
+   
+  /* Set a specific height */
+  height: 80px;
+
+}
+.adquieree{
+  h2{
+    font-family: h2;
+    padding-top: 60px;
+      color: white;
+  }
+
+   
+  /* Set a specific height */
+  height: 80px;
+
+}
+.nieve{
+    h1{
+      color: white;
+  }
+  background-image: url("../../assets/imgs/nieve.gif");
+
+  /* Set a specific height */
+  height: 50px;
+
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+}
+/* <p>
+                            <span [innerHTML]="product.short_description.substr(0, 50) + '...'"></span>
+                            <span *ngIf="product.average_rating >= 1">
+                              <ion-icon style="color: #d4af37" small name="star"></ion-icon>
+                            </span>
+                            <span *ngIf="product.average_rating >= 2">
+                              <ion-icon style="color: #d4af37" small name="star"></ion-icon>
+                            </span>
+                            <span *ngIf="product.average_rating >= 3">
+                              <ion-icon style="color: #d4af37" small name="star"></ion-icon>
+                            </span>
+                            <span *ngIf="product.average_rating >= 4">
+                              <ion-icon style="color: #d4af37" small name="star"></ion-icon>
+                            </span>
+                            <span *ngIf="product.average_rating >= 5">
+                              <ion-icon style="color: #d4af37" small name="star"></ion-icon>
+                            </span>
+                            </p>
+*/

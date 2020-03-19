@@ -1,18 +1,69 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="danger">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>Inicio</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+<ion-content class="pasha" no-padding>
+    <div>
+        <ion-grid>
+            <ion-row font-size="30px" text-center>
+                <ion-col col-12>
+                    <div class="nieve">
+                    <h1 >El Bosque del Ciclo Verde</h1>
+                    </div>
+                </ion-col>
+            </ion-row>
+            <ion-row text-center class="nieve">
+                <ion-col col-3><img src="../../assets/imgs/cel.png" (click)="openPage('ar')"></ion-col>
+                <ion-col col-3><img src="../../assets/imgs/gps.png" (click)="openPage('mapa')"></ion-col>
+                <ion-col col-3><img src="../../assets/imgs/mensaje.png" (click)="openPage('bosky')"></ion-col>
+                <ion-col col-3><img src="../../assets/imgs/carrito.png" (click)="openPage('compras')"></ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+                        <div class="adquieree">
+                            <h2 text-center>Adquiere tus boletos:</h2>
+                        </div>
+            <ion-grid>
+                <ion-row>
+                    <ion-col *ngFor="let product of products" text-wrap (click)="openProductPage(product)" col-6>
+                                <ion-card >
+                                    <ion-avatar item-start *ngFor="let image of product.images">
+                                        <img [src]="image.src">
+                                    </ion-avatar>
+                                    <ion-card-content>
+                                            {{product.name}} llévatelo por tan solo ${{product.price}}
+                                    </ion-card-content>
+                                </ion-card>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+<div class="adquiere">
+    <h2 text-center>Galeria:</h2>
+</div>
+<div class="slides">
+    <ion-slides loop="true" autoplay="4000" effect="fade" speed="1500" pager>
+        <ion-slide>
+            <img src="../../assets/imgs/2.jpg">
+        </ion-slide>
+        <ion-slide>
+            <img src="../../assets/imgs/3.jpg">
+        </ion-slide>
+        <ion-slide>
+            <img src="../../assets/imgs/4.jpg">
+        </ion-slide>
+        <ion-slide>
+            <img src="../../assets/imgs/5.jpg">
+        </ion-slide>
+        <ion-slide>
+            <img src="../../assets/imgs/6.jpg">
+        </ion-slide>
+    </ion-slides>
+</div>
 </ion-content>

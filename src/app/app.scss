@@ -14,3 +14,15 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+@font-face{
+  font-family: great;
+  src : url('../assets/text/great.ttf')
+}
+@font-face{
+  font-family: h2;
+  src : url('../assets/text/h2.otf')
+}
+.pasha {
+    background-image: url('../assets/imgs/plazoleta.jpg');
+    background-size: cover;
+}

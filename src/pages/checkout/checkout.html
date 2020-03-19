@@ -1,0 +1,82 @@
+<ion-header>
+
+  <ion-navbar  color="danger">
+    <ion-title>Compra</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+    <ion-list>
+  <form [formGroup]="myForm" (ngSubmit)="saveData()" novalidate>
+      <ion-item-divider color="danger">Detalles Personales</ion-item-divider>
+      <ion-item>
+        <ion-label>Nombre</ion-label>
+        <ion-input  type="text" formControlName="first_name" ></ion-input>
+      </ion-item>
+          <ion-item *ngIf="myForm.get('first_name').errors && myForm.get('first_name').dirty">
+            <p class="error" text-center color="red" ion-text *ngIf="myForm.get('first_name').hasError('required')">Atención! Este campo es requerido</p>
+          </ion-item>
+
+      <ion-item>
+        <ion-label>Apellidos</ion-label>
+        <ion-input  type="text" formControlName="last_name" ></ion-input>
+      </ion-item>
+          <ion-item *ngIf="myForm.get('last_name').errors && myForm.get('last_name').dirty">
+            <p text-center color="danger" ion-text *ngIf="myForm.get('last_name').hasError('required')">Atención! Este campo es requerido</p>
+          </ion-item>
+      <ion-item>
+        <ion-label>Correo</ion-label>
+        <ion-input  type="email" formControlName="email" ></ion-input>
+      </ion-item>
+          <ion-item *ngIf="myForm.get('email').errors && myForm.get('email').dirty">
+            <p class="error" text-center color="danger" ion-text *ngIf="myForm.get('email').hasError('required')">Atención! Este campo es requerido</p>
+          </ion-item>
+      <ion-item-divider color="danger">Detalles de Pago</ion-item-divider>
+
+      <ion-item>
+        <ion-label>Calle</ion-label>
+        <ion-textarea  type="text" maxlength="80" formControlName="address_1" ></ion-textarea>
+      </ion-item>
+          <ion-item *ngIf="myForm.get('address_1').errors && myForm.get('address_1').dirty">
+            <p text-center color="danger" ion-text *ngIf="myForm.get('address_1').hasError('required')">Atención! Este campo es requerido</p>
+          </ion-item>
+      <ion-item>
+        <ion-label>Ciudad</ion-label>
+        <ion-input  type="text" formControlName="city" ></ion-input>
+      </ion-item>
+          <ion-item *ngIf="myForm.get('city').errors && myForm.get('city').dirty">
+            <p text-center color="danger" ion-text *ngIf="myForm.get('city').hasError('required')">Atención! Este campo es requerido</p>
+          </ion-item>
+      <ion-item>
+        <ion-label>Codigo Postal</ion-label>
+        <ion-input  type="number"  clearInput  formControlName="postcode"></ion-input>
+      </ion-item>
+          <ion-item *ngIf="myForm.get('postcode').errors && myForm.get('postcode').dirty">
+            <p text-center color="red" ion-text *ngIf="myForm.get('postcode').hasError('required')">Atención! Este campo es requerido</p>
+          </ion-item>
+      <ion-item>
+        <ion-label>Teléfono</ion-label>
+        <ion-input  type="tel" clearInput formControlName="phone"></ion-input>
+      </ion-item>
+          <ion-item *ngIf="myForm.get('phone').errors && myForm.get('phone').dirty">
+            <p text-center color="danger" ion-text *ngIf="myForm.get('phone').hasError('required')">Atención! Este campo es requerido</p>
+          </ion-item>
+          </form>
+      <ion-item-divider color="danger">Metodos de Pago</ion-item-divider>
+
+      <ion-item>
+        <ion-label>Métodos de Pago</ion-label>
+        <ion-select [(ngModel)]="paymentMethod">
+          <ion-option *ngFor="let p of paymentMethods" value="{{p.method_id}}">{{ p.method_title }}</ion-option>
+        </ion-select>
+      </ion-item>
+
+    </ion-list>
+  <button [disabled]="myForm.invalid" ion-button block color="danger" id="buyNowBtn" (click)="placeOrder()">Hacer Pago</button>
+
+</ion-content>
+
+

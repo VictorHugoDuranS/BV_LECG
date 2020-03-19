@@ -1,0 +1,45 @@
+<ion-header>
+
+  <ion-navbar  color="danger">
+    <ion-title>{{ product?.title }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content> 
+
+  <ion-fab right top edge (click)="openCart()">
+    <button ion-fab color="primary">
+      <ion-icon name="cart"></ion-icon>
+    </button> 
+  </ion-fab>
+
+<ion-grid>
+  <ion-row>
+    <ion-card>
+    <ion-slides autoplay="3000">
+      <ion-slide *ngFor="let image of product.images">
+        <img [src]="image.src">
+      </ion-slide>
+    </ion-slides>
+  </ion-card>
+  </ion-row>
+</ion-grid> 
+
+<ion-card>
+    <ion-card-content>
+        <ion-card-title>
+          {{ product?.name }} &nbsp;
+          <ion-chip *ngFor="let cat of product.categories" style="margin-left: 5px;">
+            <ion-label color="danger"> {{ cat.name }} </ion-label>
+          </ion-chip>
+        </ion-card-title>
+        <p [innerHTML]="product?.description"></p>
+        <button ion-button icon-left block outline color="danger" (click)="addToCart(product)">
+            <ion-icon name="basket"></ion-icon> Añadir al carrito
+          </button>
+      </ion-card-content>  
+</ion-card>
+
+</ion-content>
